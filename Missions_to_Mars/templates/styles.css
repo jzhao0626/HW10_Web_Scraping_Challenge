@@ -1,0 +1,11 @@
+.Mars_Hemispheres {
+    border: 3px;
+    border-style:solid;
+    border-color: black;
+    padding: 10px;
+}
+
+body {
+    padding: auto;
+    background:chocolate;
+}

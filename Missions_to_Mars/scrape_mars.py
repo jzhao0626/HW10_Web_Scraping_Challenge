@@ -4,12 +4,19 @@ from splinter import Browser
 from bs4 import BeautifulSoup
 from webdriver_manager.chrome import ChromeDriverManager
 
+
+
 def scrape():
     Mars_News_dict = Mars_News()
     Mars_Featured_Image_dict = Mars_Featured_Image()
     Mars_Fact_dict = Mars_Fact()
     Mars_Hemispheres_dict = Mars_Hemispheres()
-    
+
+    mars_dict = {**Mars_News_dict, **Mars_Featured_Image_dict, **Mars_Fact_dict, **Mars_Hemispheres_dict}
+
+    return mars_dict
+
+
 
 def Mars_News():
 
@@ -91,9 +98,9 @@ def Mars_Fact():
 
     tables = pd.read_html(url)
     table = tables[0]
-    table.columns = ['Key', 'Value']
+    table.columns = ['Description', 'Mars']
     
-    table_html = table.to_html()
+    table_html = table.to_html(index=False)
     Mars_Fact_dict= {'table_html': table_html}
 
     browser.quit()
@@ -130,7 +137,7 @@ def Mars_Hemispheres():
         new_soup = BeautifulSoup(new_html, 'html.parser')
         
         download = new_soup.find('div', class_='downloads')
-        original = download.find_all('li')[1].a['href']
+        original = download.find_all('li')[0].a['href']
         image_dict['img_url'] = original
         image_list.append(image_dict)
         

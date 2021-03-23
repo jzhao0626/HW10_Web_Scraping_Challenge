@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mission to Mars</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="jumbotron text-center">
+      <h1>Mission to Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+    </div>
+
+    <div class="row" content="Latest_Mars_News">
+
+        <div class="col-md-12">
+            <h3 class="heading">Another First: Perseverance Captures the Sounds of Driving on Mars</h3>
+            <p>'NASA’s newest rover recorded audio of itself crunching over the surface of the Red Planet, adding a whole new dimension to Mars exploration.'</p>
+        </div>
+
+    </div>
+
+    <br>
+
+    <div class="row" content="Feature_Image_And_Mars_Facts">
+
+        <div class="col-md-6">
+            <h3 class="heading">Featured Mars Image</h3>
+            <img src='https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/image/featured/mars1.jpg', alt="Featured_Image">
+        </div>
+
+        <div class="col-md-1"></div>
+
+        <div class="col-md-4">
+            <h3 class="heading">Mars Facts</h3>
+            '<table border="1" class="dataframe">\n  <thead>\n    <tr style="text-align: right;">\n      <th></th>\n      <th>Value</th>\n    </tr>\n    <tr>\n      <th>Key</th>\n      <th></th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>Equatorial Diameter:</th>\n      <td>6,792 km</td>\n    </tr>\n    <tr>\n      <th>Polar Diameter:</th>\n      <td>6,752 km</td>\n    </tr>\n    <tr>\n      <th>Mass:</th>\n      <td>6.39 × 10^23 kg (0.11 Earths)</td>\n    </tr>\n    <tr>\n      <th>Moons:</th>\n      <td>2 (Phobos &amp; Deimos)</td>\n    </tr>\n    <tr>\n      <th>Orbit Distance:</th>\n      <td>227,943,824 km (1.38 AU)</td>\n    </tr>\n    <tr>\n      <th>Orbit Period:</th>\n      <td>687 days (1.9 years)</td>\n    </tr>\n    <tr>\n      <th>Surface Temperature:</th>\n      <td>-87 to -5 °C</td>\n    </tr>\n    <tr>\n      <th>First Record:</th>\n      <td>2nd millennium BC</td>\n    </tr>\n    <tr>\n      <th>Recorded By:</th>\n      <td>Egyptian astronomers</td>\n    </tr>\n  </tbody>\n</table>'
+        </div>
+    </div>
+
+    <br>
+
+    <div class="row" content="Mars_Hemispheres"></div>
+
+        {% for image_url in image_urls %}
+
+            <div class="col-md-6">
+                <image class="Mars_Hemispheres_Image" src='https://astropedia.astrogeology.usgs.gov/download/Mars/Viking/cerberus_enhanced.tif/full.jpg' width=100%></image>
+                <p>'Cerberus Hemisphere Enhanced'</p>
+            </div>
+
+            <div class="col-md-6">
+                <image class="Mars_Hemispheres_Image" src='https://astropedia.astrogeology.usgs.gov/download/Mars/Viking/cerberus_enhanced.tif/full.jpg' width=100%></image>
+                <p>'Cerberus Hemisphere Enhanced'</p>
+            </div>
+
+            <div class="col-md-6">
+                <image class="Mars_Hemispheres_Image" src='https://astropedia.astrogeology.usgs.gov/download/Mars/Viking/cerberus_enhanced.tif/full.jpg' width=100%></image>
+                <p>Cerberus Hemisphere Enhanced</p>
+            </div>
+
+            <div class="col-md-6">
+                <image class="Mars_Hemispheres_Image" src="https://astropedia.astrogeology.usgs.gov/download/Mars/Viking/cerberus_enhanced.tif/full.jpg" width=100%></image>
+                <p>Cerberus Hemisphere Enhanced</p>
+            </div>
+
+        {% endfor %}
+    
+    </div>
+
+</body>
+
+</html>
+
