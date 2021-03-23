@@ -33,8 +33,14 @@ def Mars_News():
     soup = BeautifulSoup(html, 'html.parser')
 
     # Get a list of all news division and pick out the latest one
-    results = soup.find_all('div', class_='list_text')
-    result = results[0]
+    status = True
+    while status:
+        try:
+            results = soup.find_all('div', class_='list_text')
+            result = results[0]
+            status = False
+        except:
+            pass
 
     # Identify and return title and paragraph
     news_title = result.find('div', class_='content_title').a.text.strip()
@@ -65,13 +71,20 @@ def Mars_Featured_Image():
     soup = BeautifulSoup(html, 'html.parser')
 
     # Open up full image
-    browser.links.find_by_partial_text('FULL IMAGE').click()
+    status = True
+    while status:
+        try:
+            browser.links.find_by_partial_text('FULL IMAGE').click()
 
-    html = browser.html
-    soup = BeautifulSoup(html, 'html.parser')
+            html = browser.html
+            soup = BeautifulSoup(html, 'html.parser')
 
-    image_box = soup.find('div', class_='fancybox-inner')
-    featured_image_url = url.replace('index.html', '') + image_box.img['src']
+            image_box = soup.find('div', class_='fancybox-inner')
+            featured_image_url = url.replace('index.html', '') + image_box.img['src']
+            status = False
+        except:
+            pass
+    
 
     browser.quit()
 
@@ -94,13 +107,12 @@ def Mars_Fact():
 
     # Create BeautifulSoup object; parse with 'html.parser'
     html = browser.html
-    soup = BeautifulSoup(html, 'html.parser')
 
     tables = pd.read_html(url)
     table = tables[0]
     table.columns = ['Description', 'Mars']
     
-    table_html = table.to_html(index=False)
+    table_html = table.to_html(index=False, classes = "table table-striped")
     Mars_Fact_dict= {'table_html': table_html}
 
     browser.quit()
